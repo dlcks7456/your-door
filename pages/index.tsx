@@ -202,7 +202,7 @@ export default function Home({data}:InferGetServerSidePropsType<typeof getServer
             <div className={["fixed w-full flex justify-center animate__animated", !into ? "animate__fadeInDown" : "into-button"].join(" ")}>
                 <div className="flex flex-col gap-5 items center">
                   <div className="relative flex items-center justify-center">
-                    <Image src={"/cats.jpg"} alt="cats" width={100} height={100} className="rounded-lg shadow-lg"/>
+                    <Image src={"/cat.jpg"} alt="cats" width={200} height={200} className="rounded-lg shadow-lg"/>
                   </div>
                   <button onMouseOver={()=>{setLock(true);}} onMouseOut={()=>{setLock(false);}} className="flex items-center justify-center gap-2 p-2 text-white transition-colors bg-gray-500 rounded-md hover:bg-black shadow-md" onClick={()=>{setInto(true); }}>
                     OPEN

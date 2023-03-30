@@ -1,0 +1,55 @@
+.open .door-raw{
+  animation: growAndDisappear 1s forwards;
+}
+
+.open .door{
+  animation: doorGrowAndDisappear 1s forwards;   
+}
+
+.over .door{
+  animation: doorDisappear 1s forwards;
+}
+
+.close .door{
+  animation: closeDoor 1s forwards;
+}
+@keyframes growAndDisappear {
+  0% {
+      opacity: 1;
+  }
+  100% {
+      background-size: 400%;
+      opacity: 0;
+  }
+}
+
+@keyframes doorGrowAndDisappear{
+  0% {
+      transform: perspective(800px) rotateY(-45deg);
+      opacity: 1;
+  }
+  100% {
+      transform: perspective(800px) rotateY(-90deg);
+      transform-origin: 76.5%;
+      background-size: 400%;
+      opacity: 0;
+  }
+}
+
+@keyframes doorDisappear{
+  0% {
+      transform: rotateY(0deg);
+  }
+  100% {
+      transform: perspective(800px) rotateY(-45deg);
+  }
+}
+
+@keyframes closeDoor{
+  0% {
+      transform: perspective(800px) rotateY(-45deg);
+  }
+  100% {
+      transform: rotateY(0deg);
+  }
+}

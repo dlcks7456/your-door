@@ -195,7 +195,7 @@ export default function Home({data}:InferGetServerSidePropsType<typeof getServer
 `}
 </style>
       <div className="relative w-full">
-        <div className="w-full h-full pt-5 md:pt-32 mt-14">
+        <div className="w-full h-full pt-20 md:pt-32 mt-14">
           <div className={["fixed flex items-center justify-center top-0 w-full h-full bg-white", into ? "suzume" : ""].join(" ")}></div>
             <div className={["fixed w-full flex justify-center animate__animated", !into ? "animate__fadeInDown" : "into-button"].join(" ")}>
                 <div className="flex flex-col gap-5 items center">

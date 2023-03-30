@@ -10,7 +10,7 @@ interface imageProps{
   image : string|null;
   dec : string|null;
   alt : string|null;
-  download_location : string|null;
+  downloadUrl : string|null;
   imageHtml: string|null;
   userName : string|null,
   userHtml : string|null,
@@ -45,11 +45,9 @@ export default function Home({data}:InferGetServerSidePropsType<typeof getServer
   const [downloading, setDownloading] = useState<boolean>(false);
 
   const downloadClick = async ()=>{
-    if( data.download_location === null ) return;
-    const download = await fetch(`${data.download_location}?client_id=${process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}`);
-    const downloadData = await download.json();
-    const res = await fetch(downloadData.url);
-    const blob = await res.blob();
+    if( data.downloadUrl === null || data.downloadUrl === undefined ) return;
+    const download = await fetch(data.downloadUrl);
+    const blob = await download.blob();
     const url = window.URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
@@ -312,7 +310,7 @@ export default function Home({data}:InferGetServerSidePropsType<typeof getServer
                         {downloading ? (
                           <div className="w-8 h-8 border-4 border-t-4 border-white rounded-full border-t-black animate-spin"></div>
                         ) : 
-                        data.download_location ? (
+                        data.downloadUrl ? (
                           <>
                             <div
                               onClick={()=>{
@@ -344,7 +342,7 @@ export default function Home({data}:InferGetServerSidePropsType<typeof getServer
 
 export const getServerSideProps: GetServerSideProps<{ data:any }> = async ()=>{
   try {
-    const res = await fetch(`https://api.unsplash.com/photos/random?client_id=${process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}&orientation=landscape`);
+    const res = await fetch(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_ACCESS_KEY}&orientation=landscape`);
     const data = await res.json();
     
     const { alt_description, urls, links } = data;
@@ -353,12 +351,15 @@ export const getServerSideProps: GetServerSideProps<{ data:any }> = async ()=>{
     const imageName = `${name}-${id}.jpg`;
     const { html:imageHtml, download_location } = links;
 
+    const download = await fetch(`${download_location}?client_id=${process.env.UNSPLASH_ACCESS_KEY}`);
+    const downloadData = await download.json();
+
     return {
       props: { data : {
         image : regular,
         dec : alt_description,
         alt : data.description || 'Unsplash Image',
-        download_location,
+        downloadUrl : downloadData.url,
         imageName,
         imageHtml,
         userName : name,
@@ -371,7 +372,7 @@ export const getServerSideProps: GetServerSideProps<{ data:any }> = async ()=>{
         image : '/other_world.png',
         dec : 'Sorry, that didn\'t work, please check back later 😭',
         alt : 'default image',
-        download_location : null,
+        downloadUrl : null,
         imageName: null,
         imageHtml: null,
         userName : null,

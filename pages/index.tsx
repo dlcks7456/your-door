@@ -218,6 +218,12 @@ export default function Home({data}:InferGetServerSidePropsType<typeof getServer
                   </button>
                   <div className="text-xs text-center flex justify-center items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
+                    </svg>
+                    <div>Nothing that would be a spoiler</div>
+                  </div>
+                  <div className="text-xs text-center flex justify-center items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" />
                     </svg>
                     <div>The music plays</div>
@@ -271,6 +277,16 @@ export default function Home({data}:InferGetServerSidePropsType<typeof getServer
                     <Image src={'/only-door_640.png'} fill alt={'door_raw'}/>
                   </div>
                 </div>
+                {open ? null : (
+                    <div className="animate__animated animate__fadeIn animate__delay-5s">
+                      <div className="mt-5 flex gap-1 items-center justify-center animate__animated animate__pulse animate__infinite text-white">
+                        <div>Click on the door</div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59" />
+                        </svg>
+                      </div>
+                    </div>
+                )}
                 {open ? (
                     <>
                       <div className="flex flex-col items-center justify-center animate__animated animate__fadeInUp">

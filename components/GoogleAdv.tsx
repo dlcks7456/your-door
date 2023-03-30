@@ -7,13 +7,8 @@ declare global {
 }
 
 const GoogleAd = () => {
-
   // useEffect(() => {
-  //   try {
-  //     (window.adsbygoogle = window.adsbygoogle || []).push({});
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
+  //   (window.adsbygoogle = window.adsbygoogle || []).push({});
   // }, []);
 
   return (

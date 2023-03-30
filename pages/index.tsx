@@ -228,7 +228,9 @@ export default function Home({data}:InferGetServerSidePropsType<typeof getServer
                     </svg>
                     <div>A random landscape photo will appear</div>
                   </div>
-                  <GoogleAd/>
+                  <div className="w-full">
+                    <GoogleAd/>
+                  </div>
                   <div className="pt-3 mt-10 flex flex-col items-center justify-center gap-4 border-t-[1px] border-gray-300">
                     <div className="text-xs text-center">
                       Copyright ⓒ 2023 Chan.lee all right reserved.
